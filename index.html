@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Strong Wave Fitness</title>
+  <style>
+    html,body { height:100%; margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
+    #bg-video { position: fixed; inset: 0; width:100%; height:100%; object-fit:cover; z-index:0; pointer-events:none; background:#000; }
+    .video-overlay { position:fixed; inset:0; z-index:1; background:linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.45)); pointer-events:none; }
+    .container { position:relative; z-index:2; min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:60px 20px; box-sizing:border-box; text-align:center; }
+    h1 { font-size:clamp(32px,6vw,64px); margin:8px 0 18px; text-shadow:0 6px 20px rgba(0,0,0,0.6); }
+    nav { margin-bottom:36px; }
+    nav a { color:#fff; margin:0 18px; font-weight:700; text-decoration:none; text-shadow:0 4px 12px rgba(0,0,0,0.45); }
+    .about-section { max-width:1100px; background:rgba(0,0,0,0.25); padding:22px; border-radius:10px; font-size:clamp(15px,2.2vw,22px); line-height:1.5; margin-top:auto; margin-bottom:60px; text-align:left; }
+    @media (max-width:720px) { .about-section { text-align:left; font-size:16px; } }
+  </style>
+</head>
+<body>
+
+  <!-- TEMP: controls added to help debug. Remove "controls" later. -->
+  <video id="bg-video" controls autoplay muted loop playsinline preload="auto" poster="videos/gym-bg-poster.jpg">
+    <source src="videos/gym-bg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="video-overlay" aria-hidden="true"></div>
+
+  <div class="container" role="main" aria-labelledby="site-title">
+    <h1 id="site-title">Strong Wave Fitness</h1>
+
+    <nav aria-label="Primary">
+      <a href="home.html">Home</a>
+      <a href="new-page.html">About</a>
+      <a href="new-page.html">Information</a>
+    </nav>
+
+    <div class="about-section" id="about">
+      <p>
+        Strong Wave Fitness is a growing fitness brand dedicated to providing affordable and high-quality products for students, hostel residents, and home gym users. We create durable handmade wooden gym equipment, everyday fitness accessories, and custom-designed fitness T-shirts that bring both style and motivation to your workouts. Our goal is simple: make fitness accessible and enjoyable for everyone. With creativity, strength, and passion behind every product, Strong Wave Fitness supports your journey to becoming stronger—anytime, anywhere.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

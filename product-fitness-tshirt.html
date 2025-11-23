@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Fitness T-shirt — Strong Wave Fitness</title>
+
+  <!-- Use shared stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* small page-specific overrides */
+    .product-wrap{ max-width:1100px; margin:32px auto; padding:20px; display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:start; }
+    .product-media{ display:flex; flex-direction:column; gap:12px }
+    .product-media img{ width:100%; border-radius:12px; object-fit:cover; background:#333; height:480px; }
+    .thumbs{ display:flex; gap:10px; margin-top:6px; }
+    .thumbs img{ width:84px; height:84px; object-fit:cover; border-radius:8px; cursor:pointer; border:2px solid transparent; }
+    .thumbs img.active{ border-color:var(--accent); }
+    .product-info h1{ margin:0 0 8px; font-size:28px }
+    .price{ font-weight:800; color:var(--accent); font-size:20px; margin-top:6px; }
+    .meta{ color:var(--muted); margin-top:6px; font-size:14px }
+    .options{ margin-top:16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap }
+    .select{ padding:8px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.08); }
+    .qty{ width:84px; padding:8px 10px; border-radius:8px; border:1px solid rgba(0,0,0,0.08) }
+    .actions{ margin-top:18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap }
+    .btn-ghost{ background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.12); padding:10px 12px; border-radius:10px; text-decoration:none; font-weight:700 }
+    .specs{ margin-top:18px; background:transparent; padding:12px; border-radius:10px }
+    @media(max-width:920px){ .product-wrap{ grid-template-columns:1fr; } .product-media img{ height:320px } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-brand" href="index.html">Strong Wave Fitness</a>
+    <div class="nav" role="navigation" aria-label="Main">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="information.html">Information</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel product-wrap">
+
+      <!-- Left: images -->
+      <div class="product-media">
+        <!-- main product image: using your uploaded file path so you can test immediately -->
+        <img id="mainImage" src="/mnt/data/882d05e1-7b7b-4fe4-8991-a5362705f1b0.png" alt="Fitness T-shirt">
+
+        <div class="thumbs" aria-hidden="false">
+          <!-- thumbnails (click to change main image) -->
+          <img src="/mnt/data/882d05e1-7b7b-4fe4-8991-a5362705f1b0.png" class="active" data-src="/mnt/data/882d05e1-7b7b-4fe4-8991-a5362705f1b0.png" alt="thumb1">
+          <img src="/mnt/data/download.png" data-src="/mnt/data/download.png" alt="thumb2">
+          <img src="/mnt/data/e20166ae-6695-40db-93f5-f4ca88dd918f.png" data-src="/mnt/data/e20166ae-6695-40db-93f5-f4ca88dd918f.png" alt="thumb3">
+        </div>
+      </div>
+
+      <!-- Right: product details -->
+      <div class="product-info">
+        <h1>Fitness T-shirt</h1>
+        <div class="price">LKR 1,200</div>
+        <div class="meta">Comfortable, breathable fitness tee — made for training and everyday wear.</div>
+
+        <div class="options">
+          <label>
+            Size
+            <select id="sizeSelect" class="select">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </label>
+
+          <label>
+            Quantity
+            <input id="qty" class="qty" type="number" min="1" value="1">
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="addCart" class="btn">Add to Cart</button>
+          <a id="buyNow" class="btn" href="contact.html">Buy / Order</a>
+          <a id="waDirect" class="btn-ghost" href="#" title="Message on WhatsApp">Message on WhatsApp</a>
+        </div>
+
+        <div class="specs">
+          <h4>Product details</h4>
+          <ul>
+            <li>100% cotton / breathable knit</li>
+            <li>Machine-washable</li>
+            <li>Regular fit — true to size</li>
+            <li>Made & inspected by Strong Wave Fitness</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:12px">
+          <a class="btn-ghost" href="home.html">← Back to items</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">&copy; <span id="yr"></span> Strong Wave Fitness</footer>
+
+  <!-- set WA number for shared scripts.js -->
+  <script>window.SWF_WA_NUMBER = '94701421968';</script>
+  <script src="scripts.js" defer></script>
+
+  <script>
+    // thumbnail click -> change main image
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.thumbs img').forEach(thumb=>{
+        thumb.addEventListener('click', function(){
+          document.querySelectorAll('.thumbs img').forEach(t=>t.classList.remove('active'));
+          thumb.classList.add('active');
+          const src = thumb.getAttribute('data-src') || thumb.src;
+          document.getElementById('mainImage').src = src;
+        });
+      });
+
+      // Add to cart (simple front-end demo)
+      document.getElementById('addCart').addEventListener('click', function(){
+        const size = document.getElementById('sizeSelect').value;
+        const qty = Number(document.getElementById('qty').value || 1);
+        alert(`Added ${qty} x Fitness T-shirt (Size: ${size}) to cart — demo only.`);
+      });
+
+      // WhatsApp direct button (also wired by scripts.js; this is additional fallback)
+      document.getElementById('waDirect').addEventListener('click', function(e){
+        e.preventDefault();
+        const size = document.getElementById('sizeSelect').value;
+        const qty = Number(document.getElementById('qty').value || 1);
+        const text = encodeURIComponent(`Hello, I want to order ${qty} x Fitness T-shirt (Size: ${size}).`);
+        const WA = window.SWF_WA_NUMBER || '94701421968';
+        window.open(`https://wa.me/${WA}?text=${text}`, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>

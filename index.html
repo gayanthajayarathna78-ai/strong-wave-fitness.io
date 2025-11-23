@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Strong Wave Fitness</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Background video styling */
+    #bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+      background: #000;
+    }
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+      pointer-events: none;
+    }
+    main { position: relative; z-index: 10; }
+  </style>
+</head>
+
+<body>
+  <!-- Background Video -->
+  <video id="bg-video" autoplay muted loop playsinline preload="auto">
+   <source src="videos/gym-bg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="video-overlay"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a class="site-brand" href="index.html">Strong Wave Fitness</a>
+
+    <div class="nav" role="navigation" aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="information.html">Information</a>
+      <a href="contact.html">Contact</a>
+      <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="hero" role="banner">
+      <h1 class="site-title">Strong Wave Fitness</h1>
+
+      <div class="cta-row">
+        <a class="btn" href="home.html">Browse Items</a>
+        <a class="btn" href="contact.html">Contact Us</a>
+      </div>
+    </section>
+
+    <section class="about-block" aria-labelledby="about-heading">
+      <p id="about-heading">
+        Strong Wave Fitness is a growing fitness brand dedicated to providing affordable and high-quality products for students, hostel residents, and home gym users. We create durable handmade wooden gym equipment, everyday fitness accessories, and custom-designed fitness T-shirts that bring both style and motivation to your workouts. Our goal is simple: make fitness accessible and enjoyable for everyone. With creativity, strength, and passion behind every product, Strong Wave Fitness supports your journey to becoming stronger—anytime, anywhere.
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      &copy; <span id="yr"></span> Strong Wave Fitness
+    </footer>
+  </main>
+
+  <!-- Shared JS -->
+  <script src="scripts.js" defer></script>
+</body>
+</html>
